@@ -1,0 +1,63 @@
+@baseUrl = http://localhost:3001
+
+@contentType = application/json
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYsImlhdCI6MTU5NDkzOTYyMSwiZXhwIjoxNTk0OTQxNDIxfQ.WW7l0VCndFz98DoA2S55JdcRgDD--swa61BSBwZ-m48
+
+@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYsInZlcnNpb24iOjAsImlhdCI6MTU5NDk0MzEwOCwiZXhwIjoxNTk3NTM1MTA4fQ.enddrG0Pmu3fms2nPVvR21gs4wx6ptPbUu3eo6-Khtc
+
+### Create an Account
+POST {{baseUrl}}/auth/sign-up
+Content-Type: {{contentType}}
+
+{
+    "email": "giovanni47@tonussi.com",
+    "password": "123423",
+    "password_confirmation": "123423"
+}
+
+### Sign in
+POST {{baseUrl}}/auth/sign-in
+Content-Type: {{contentType}}
+
+{
+    "email": "giovanni47@tonussi.com",
+    "password": "123423"
+}
+
+### Refresh
+POST {{baseUrl}}/auth/refresh
+Content-Type: {{contentType}}
+Authorization: Bearer {{refreshToken}}
+
+### List Links
+GET {{baseUrl}}/link
+Content-Type: {{contentType}}
+Authorization: Bearer {{token}}
+
+### Create Link
+POST {{baseUrl}}/link
+Content-Type: {{contentType}}
+
+{
+    "label": "Meu site",
+    "url": "https://www.uol.com.br",
+    "isSocial": false
+}
+
+### Get a link by ID
+GET {{baseUrl}}/link/9
+Content-Type: {{contentType}}
+
+### Update a link
+PUT {{baseUrl}}/link/9
+Content-Type: {{contentType}}
+
+{
+    "label": "Meu novo site",
+    "isSocial": true
+}
+
+### Delete a link
+DELETE {{baseUrl}}/link/9
+Content-Type: {{contentType}}
